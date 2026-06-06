@@ -1,0 +1,23 @@
+# Environment secrets — NEVER commit
+.env
+
+# Stage outputs and logs (auto-generated, potentially contain PII)
+output/
+logs/
+
+# Node modules
+node_modules/
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# Editor artifacts
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temp files
+*.tmp
+*.log
