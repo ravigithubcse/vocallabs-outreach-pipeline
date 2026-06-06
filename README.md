@@ -231,12 +231,6 @@ Every email resolution and send is appended to JSONL audit logs. These are appen
 
 ---
 
-## Reimbursement & Credits
-
-- **Namecheap domain**: Submit payment screenshot + UPI ID at [forms.gle/24Sui9bUX9yS3Qxx7](https://forms.gle/24Sui9bUX9yS3Qxx7)
-- **Eazyreach credits**: Create account, share details with Vocallabs — they top it up
-
----
 
 ## Tech Stack
 
