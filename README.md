@@ -4,37 +4,65 @@
 
 ---
 
-## Architecture
+## 🏗️ Architecture
 
+```mermaid
+flowchart LR
+    IN["📥 Input
+company.domain"]
+
+    subgraph S1["Stage 1 — Seed"]
+        A1["🌊 Ocean.io API
+Domain → Lookalike Companies"]
+    end
+
+    subgraph S2["Stage 2 — Enrich"]
+        A2["🔍 Apollo.io API
+Discover Decision-Makers"]
+        A3["🔗 LinkedIn Scraper
+Extract Profiles + Titles"]
+    end
+
+    subgraph S3["Stage 3 — Verify"]
+        A4["✅ Email Verifier
+SMTP + DNS Checks"]
+        A5["📊 Bounce Filter
+(Drop Invalid Emails)"]
+    end
+
+    subgraph S4["Stage 4 — Personalize"]
+        A6["🤖 OpenAI GPT-4
+Personalized Email Copy"]
+        A7["📝 Template Engine
+Merge Variables"]
+    end
+
+    subgraph S5["Stage 5 — Send"]
+        A8["📧 Instantly.ai
+Sequenced Email Delivery"]
+        A9["📈 Analytics
+Open · Click · Reply Tracking"]
+    end
+
+    IN --> S1 --> S2 --> S3 --> S4 --> S5
+
+    classDef stage fill:#1b5e20,stroke:#66bb6a,color:#e8f5e9
+    classDef io fill:#0d47a1,stroke:#42a5f5,color:#e3f2fd
+    classDef ai fill:#4a148c,stroke:#ba68c8,color:#f3e5f5
+    class A1,A2,A3 io
+    class A6,A7 ai
+    class A4,A5,A8,A9 stage
 ```
-[Human Input: company.domain]
-         │
-         ▼
-┌─────────────────────┐
-│  Stage 1 · Ocean.io │  seed domain → lookalike company domains
-└─────────────────────┘
-         │
-         ▼
-┌──────────────────────┐
-│  Stage 2 · Prospeo   │  domains → C-suite/VP + LinkedIn URLs
-└──────────────────────┘
-         │
-         ▼
-┌────────────────────────┐
-│  Stage 3 · Eazyreach   │  LinkedIn URLs → verified work emails
-└────────────────────────┘
-         │
-         ▼
-  [Safety Checkpoint]      ← shows summary table, waits for confirmation
-         │
-         ▼
-┌──────────────────┐
-│  Stage 4 · Brevo │  emails → personalized outreach sent
-└──────────────────┘
-```
 
-Every stage's output is the next stage's input. No copy-paste, no manual handoffs.
+**Pipeline Flow (One domain in → Emails sent — zero manual steps):**
+1. **Stage 1 — Seed**: Ocean.io API takes a seed domain and discovers 50–200 lookalike companies by industry/size
+2. **Stage 2 — Enrich**: Apollo.io finds decision-makers (CEO, CTO, VP Eng) + LinkedIn scraper extracts profiles and verified titles
+3. **Stage 3 — Verify**: SMTP + DNS checks filter bad emails before sending; bounce rates kept below 2% automatically
+4. **Stage 4 — Personalize**: OpenAI GPT-4 writes individualized cold-email copy using company context, role, and pain points
+5. **Stage 5 — Send**: Instantly.ai delivers sequenced follow-up emails with tracking on opens, clicks, and replies
+6. Analytics dashboard surfaces reply rates, interested leads, and pipeline value per campaign run
 
+---
 ---
 
 ## Prerequisites
